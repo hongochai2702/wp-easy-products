@@ -19,9 +19,6 @@ define('WPEASY_LOCAL', plugin_dir_path( __FILE__ ));
 define('WPEASY_ASSETS_URL', WPEASY_URL . '/assets');
 define('WPEASY_INCLUDE_LOCAL', WPEASY_LOCAL . '/includes');
 define('WPEASY_TEMPLATES_LOCAL', WPEASY_LOCAL . '/templates');
-define('WPEASY_SHORTCODE_LOCAL', WPEASY_LOCAL . '/shortcode');
-define('WPEASY_ASSEST_LOCAL', WPEASY_LOCAL . '/assests');
-define('WPEASY_SINGLE_LOCAL', WPEASY_LOCAL . '/single');
 
 // add activation hook
 register_activation_hook(__FILE__, 'wpeasy_plugin_activation');
@@ -36,7 +33,7 @@ if( !function_exists('wpeasy_load_textdomain') ){
 }
 
 // Load Class.
-require_once( WPEASY_INCLUDE_LOCAL . '/init.php' );
+require_once( WPEASY_INCLUDE_LOCAL . '/we-init.php' );
 //require_once( WPEASY_SHORTCODE_LOCAL. '/shortcode-generator.php' );
 
 add_action( 'wp_enqueue_scripts', 'wpeasy_enqueue_script' );
@@ -57,6 +54,3 @@ if( !function_exists('wpeasy_body_class') ){
 		return $classes;
 	}
 }
-
-add_image_size( 'wpeasy-image-catalog-thumb', 264, 165 , true );
-add_image_size( 'wpeasy-image-single-thumb', 355, 255 , true );
