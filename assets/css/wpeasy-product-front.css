@@ -1,0 +1,194 @@
+@charset "utf-8";
+
+/* ============================== */
+/* Product Style Archive */
+/* ============================== */
+.archive .pagination { display: block; }
+.archive-wpeasy-product {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.archive-wpeasy-product .product-news-item {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 1px solid #e8e8e8;
+    padding: 1px;
+}
+.archive-wpeasy-product .product-news-item .thumbnail {
+    margin: 0;
+    min-height: 185px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.archive-wpeasy-product .product-news-item .thumbnail a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    border: none;
+}
+.archive-wpeasy-product .product-news-item .thumbnail img {}
+.archive-wpeasy-product .product-news-item .post-content {
+    width: 100%;
+    margin: 0;
+    clear: both;
+}
+.archive-wpeasy-product .product-news-item .post-content .article-title{}
+.archive-wpeasy-product .product-news-item .post-content .article-title .heading{
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a11d1f+1,a11d1f+99 */
+    background: rgb(161,29,31); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(161,29,31,1) 1%, rgba(161,29,31,1) 99%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(161,29,31,1) 1%,rgba(161,29,31,1) 99%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  rgba(161,29,31,1) 1%,rgba(161,29,31,1) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a11d1f', endColorstr='#a11d1f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.archive-wpeasy-product .product-news-item .post-content .article-title a{
+    display: block;
+    padding: 10px;
+    color: #fff;
+}
+
+@media (min-width:0px) and (max-width: 767px) {
+  .archive-wpeasy-product .product-news-item {
+    clear: both;
+  }
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto:500&subset=vietnamese');
+
+/* ============================== */
+/* Single Product Style */
+/* ============================== */
+.title-container {
+    background-image: url(/wp-content/uploads/2017/05/thiet-bi1.jpg) !important;
+}
+.wpeasy-single-product {
+  font-family: 'Roboto', sans-serif;
+  background: #f5f5f5;
+  color: #000;
+  padding: 15px;
+}
+.wpeasy-single-product .wpeasy-product-image{}
+.wpeasy-single-product .wpeasy-product-image .thumbnail{
+    margin: 0;
+    text-align: center;
+}
+.wpeasy-single-product .wpeasy-product-image .thumbnail img{}
+
+.wpeasy-single-product .wpeasy-product-content {}
+.wpeasy-single-product .wpeasy-product-content div {
+  margin-bottom: 4px;
+}
+.wpeasy-single-product .wpeasy-product-content .product-parent-category{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+}
+.wpeasy-single-product .wpeasy-product-content .product-name{}
+.wpeasy-single-product .wpeasy-product-content .product-price{
+    color: red;
+    font-weight: bold;
+}
+.wpeasy-single-product .wpeasy-product-content .product-price > strong{
+  color: #000;
+}
+.wpeasy-single-product .wpeasy-product-content .short-description{
+    font-weight: bold;
+    text-align: justify;
+    margin-top: 5px;
+}
+
+.wpeasy-product-content-tab {}
+
+.wpeasy-product-content-tab {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    border-bottom: 3px solid #02a0d4;
+}
+.wpeasy-product-content-tab .tab {
+  color: #fff;
+  font-weight: bold;
+}
+.wpeasy-product-content-tab .tab:nth-child(1) {
+  margin-left: 0 !important;
+}
+.wpeasy-product-content-tab .tab.select {
+  color: #51a6f3;
+  background: #ebebeb;
+}
+
+.wpeasy-product-content-tab .tab {
+    transition: all ease .3s;
+    font-family: 'Roboto', sans-serif;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    padding: 10px 15px;
+    float: left;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.wpeasy-product-content-tab .tab-content {
+    transition: all ease .3s;
+    margin: 0px 0px 20px 0px;
+    padding: 15px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+.wpeasy-product-content-tab .tab-content p {
+  font-size: 14px;
+
+  font-family: 'Roboto', sans-serif;
+}
+.wpeasy-product-content-tab .main p img {
+  margin: 10px 0px;
+}
+.wpeasy-product-content-tab .tab-content h3 {
+  color: #ff8400;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.wpeasy-product-content-tab .tab-content h4 {
+  font-size: 16px;
+  color: #333;
+}
+.wpeasy-product-content-tab .tab-content .line {
+  width: 680px;
+  border-top: 1px solid #CCC;
+  margin: 10px 0px;
+}
+.wpeasy-product-content-tab .tab-content .icon {
+  font-size: 18px;
+  background: #02a0d4;
+  color: #FFF;
+  padding: 7px;
+  border-radius: 2px;
+}
+.wpeasy-product-content-tab .tab-content .content {
+  display: none;
+  padding: 0;
+}
+
+.wpeasy-product-content-tab .tab-content .cf_parameter_technical { clear: both; }
+
+.wpeasy-product-content-tab  {
+  background: #ebebeb;
+}
+.wpeasy-product-content-tab .layout-tab-product {}
+.wpeasy-product-content-tab .layout-tab-product .tab-tour {
+  display: block;
+    overflow: hidden;
+    background: #51a6f3;
+}
