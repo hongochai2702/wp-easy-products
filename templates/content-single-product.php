@@ -22,10 +22,10 @@ if ( '' != get_the_content() ) { ?>
 		<div class="story">
 	<?php } ?>
 	<?php
-		$categories = get_the_terms( $post->ID, 'product_category' );
+		$categories = get_the_terms( $post->ID, 'product_cate' );
 		foreach ($categories as $val) {
 			if ( $val->parent != 0 ) {
-				$term = get_term( $val->parent, 'product_category' );
+				$term = get_term( $val->parent, 'product_cate' );
 			}
 		}
 	?>
@@ -67,7 +67,7 @@ if ( '' != get_the_content() ) { ?>
 	</div>
 	<script type="text/javascript">
         jQuery(document).ready(function ($) {
-            $(".single-wpeasy-product .layout-tab-product .tab").click(function () {
+            $(".single-we-product .layout-tab-product .tab").click(function () {
                 var tab = $(this).attr("data-tab");
                 $(this).addClass("select");
                 $(this).siblings().removeClass("select");

@@ -40,7 +40,7 @@ add_action( 'wp_enqueue_scripts', 'wpeasy_enqueue_script' );
 if( !function_exists('wpeasy_enqueue_script') ){
 	function wpeasy_enqueue_script(){
 		if ( is_singular('product') || is_tax( 'product_cate' )  ) {
-			wp_enqueue_style('wpeasy-style', WPEASY_ASSETS_URL . '/css/front.css');
+			wp_enqueue_style('wpeasy-style', WPEASY_ASSETS_URL . '/css/wpeasy-product-front.css');
 		}
         
 	}
@@ -52,5 +52,16 @@ if( !function_exists('wpeasy_body_class') ){
 	function wpeasy_body_class( $classes ){
 		$classes[] = 'wpeasy-body';
 		return $classes;
+	}
+}
+
+if ( ! function_exists( 'is_version' ) ) {
+	function is_version( $version = '3.1' ) {
+		global $wp_version;
+		
+		if ( version_compare( $wp_version, $version, '>=' ) ) {
+			return false;
+		}
+		return true;
 	}
 }

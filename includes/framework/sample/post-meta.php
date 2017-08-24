@@ -206,7 +206,27 @@ function tpfw_example_metabox() {
 		'desc' => '',
 		'fields' => $fields
 	);
-
+	$box2 = new Tpfw_Metabox( array(
+		'id' => 'tpfw_metabox2',
+		'screens' => array( 'post' ), //Display in post, page, front_page, posts_page
+		'heading' => __( 'Metabox 2', 'tp-framework' ),
+		'context' => 'advanced', //side
+		'priority' => 'low',
+		'manage_box' => false,
+		'fields' => array(
+			//Group Default
+			array(
+				'name' => 'autocomplete1',
+				'type' => 'autocomplete',
+				'heading' => __( 'Autocomplete', 'tp-framework' ),
+				'value' => '',
+				'desc' => __( 'Ajax select', 'tp-framework' ),
+				'data' => array( 'taxonomy' => array( 'category', 'product_cate' ) ),
+				'placeholder' => __( 'Enter 3 or more characters to search...', 'tp-framework' ),
+				'min_length' => 3
+			),
+		)
+	));
 	$box1 = new Tpfw_Metabox( array(
 		'id' => 'tpfw_metabox',
 		'screens' => array( 'page' ), //Display in post, page, front_page, posts_page
@@ -405,6 +425,16 @@ function tpfw_example_metabox() {
 				'desc' => __( 'Drag the pin to manually set listing coordinates. Now very easy to save a latlng and zoom settings from user. ', 'tp-framework' ),
 				'value' => ''//default
 			),
+
+			//Group
+			array(
+				'type' => 'repeater',
+				'name' => 'test_ground',
+				'heading' => __( 'TEST THOI', 'tp-framework' ),
+				'group' => 'TEST GROUP',
+				'fields' => $fields
+			),
+
 			//Group
 			array(
 				'type' => 'repeater',

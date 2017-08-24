@@ -75,7 +75,7 @@
 	    'show_ui' => true,
 	    'show_admin_column' => true,
 	    'query_var' => true,
-	    'rewrite' => array( 'slug' => __('product-cat', 'wpeasy') ),
+	    'rewrite' => array( 'slug' => __('product_cate', 'wpeasy') ),
 	  );
 
 	  register_taxonomy( 'product_cate', array( 'product' ), $args );

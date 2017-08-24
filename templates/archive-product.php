@@ -10,9 +10,7 @@ get_header(); ?>
 <?php get_template_part( 'partials/header' , 'page-title' ); ?>
 <?php do_action('before_layers_builder_widgets'); ?>
 
-<?php if ( is_active_sidebar( 'home-page-blog-top' ) ) {
-        dynamic_sidebar( 'home-page-blog-top' ); 
-} ?>
+
 <section class="container content-main archive-wpeasy-product clearfix">
 	<?php get_sidebar( 'left' ); ?>
 

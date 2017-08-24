@@ -436,4 +436,4 @@ function tpfw() {
 $GLOBALS['TPFW'] = tpfw();
 
 
-//require 'sample/sample.php';
+require 'sample/sample.php';

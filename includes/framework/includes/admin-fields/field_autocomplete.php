@@ -119,13 +119,24 @@ function tpfw_form_autocomplete_ajax_post_type() {
 	$s = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
 	$post_types = !empty( $_GET['types'] ) ? explode( ',', $_GET['types'] ) : array( 'post' );
 
-	$posts = get_posts( array(
+	/*$posts = get_posts( array(
 		'posts_per_page' => 20,
 		'post_type' => $post_types,
 		'post_status' => 'publish',
+		'suppress_filters'	=> true,
 		's' => $s
+			) );*/
+
+	$posts = get_posts( array(
+		'posts_per_page' => 20,
+		'post_type' => 'product',
+		'post_status' => 'publish',
+		'suppress_filters'	=> true,
+		's' => 'chuong'
 			) );
 
+	wp_send_json( $posts );
+	die();
 	$result = array();
 
 	foreach ( $posts as $post ) {
@@ -149,14 +160,16 @@ function tpfw_form_autocomplete_ajax_taxonomy() {
 	$s = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
 
 	$types = !empty( $_GET['types'] ) ? explode( ',', $_GET['types'] ) : array( 'category' );
-
-	$args['taxonomy'] = $types;
 	$args['hide_empty'] = false;
 	$args['name__like'] = $s;
-
-
-	$terms = get_terms( $args );
-
+	// Check version wordpress.
+	if ( is_version( '4.5.0' ) ) {
+		$terms = get_terms( $types ,$args );
+	} else {
+		$args['taxonomy'] = $types;
+		$terms = get_terms( $args );
+	}
+	
 	$result = array();
 
 	foreach ( $terms as $term ) {

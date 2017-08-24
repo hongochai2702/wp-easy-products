@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 	/*	
 	*	Tourmaster Plugin
@@ -13,7 +13,7 @@ s<?php
 	        if ($query->is_tax){
 	            $post_type = get_query_var('post_type');
 	            if (!$post_type){
-	                $post_type = array( 'post', 'wpeasy-product' );
+	                $post_type = array( 'post', 'product' );
 	                $query->set('post_type', $post_type);
 	            }
 	        }
@@ -29,13 +29,13 @@ s<?php
 			$wpeasy_template = false;
 
 			// archive template.
-			if ( is_tax( 'product_category' ) || is_post_type_archive( 'wpeasy-product' ) ) {
+			if ( is_tax( 'product_cate' ) || is_post_type_archive( 'product' ) ) {
 				
 				$wpeasy_template = 'archive';
-				$template = WPEASY_SINGLE_LOCAL . '/archive-wpeasy-product.php';
+				$template = WPEASY_TEMPLATES_LOCAL . '/archive-product.php';
 			} else if ( isset( $_GET['product-search'] ) ) {
 				$wpeasy_template = 'search';
-				$template = WPEASY_SINGLE_LOCAL . '/archive-wpeasy-product.php';
+				$template = WPEASY_TEMPLATES_LOCAL . '/archive-product.php';
 			}else {
 				
 			}
@@ -50,10 +50,10 @@ s<?php
 	if( !function_exists('wpeasy_tour_template') ){
 		function wpeasy_tour_template( $template ){
 
-			if( get_post_type() == 'wpeasy-product' ){
-				$template = WPEASY_SINGLE_LOCAL . '/single-wpeasy-product.php';
+			if( get_post_type() == 'product' ){
+				$template = WPEASY_TEMPLATES_LOCAL . '/single-product.php';
 			}
-
+			
 			return $template;
 		}
 	}
