@@ -39,8 +39,13 @@ require_once( WPEASY_INCLUDE_LOCAL . '/we-init.php' );
 add_action( 'wp_enqueue_scripts', 'wpeasy_enqueue_script' );
 if( !function_exists('wpeasy_enqueue_script') ){
 	function wpeasy_enqueue_script(){
+		wp_register_style('wpeasy-front', WPEASY_ASSETS_URL . '/css/wpeasy-product-front.css');
+		wp_register_script('wpeasy-main', WPEASY_ASSETS_URL . '/js/main.js');
+		wp_register_script('wpeasy-isotope', WPEASY_ASSETS_URL . '/js/isotope.pkgd.min.js');
 		if ( is_singular('product') || is_tax( 'product_cate' )  ) {
-			wp_enqueue_style('wpeasy-style', WPEASY_ASSETS_URL . '/css/wpeasy-product-front.css');
+			wp_enqueue_script('wpeasy-isotope');
+			wp_enqueue_script('wpeasy-main');
+			wp_enqueue_style('wpeasy-front');	
 		}
         
 	}

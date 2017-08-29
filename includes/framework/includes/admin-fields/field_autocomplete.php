@@ -117,28 +117,33 @@ function tpfw_form_autocomplete( $settings, $value ) {
 function tpfw_form_autocomplete_ajax_post_type() {
 
 	$s = isset( $_GET['s'] ) ? sanitize_text_field( $_GET['s'] ) : '';
-	$post_types = !empty( $_GET['types'] ) ? explode( ',', $_GET['types'] ) : array( 'post' );
-
-	/*$posts = get_posts( array(
-		'posts_per_page' => 20,
-		'post_type' => $post_types,
-		'post_status' => 'publish',
-		'suppress_filters'	=> true,
-		's' => $s
-			) );*/
-
-	$posts = get_posts( array(
-		'posts_per_page' => 20,
-		'post_type' => 'product',
-		'post_status' => 'publish',
-		'suppress_filters'	=> true,
-		's' => 'chuong'
-			) );
-
-	wp_send_json( $posts );
-	die();
+	// Check version wordpress.
+	if ( is_version( '4.5.0' ) ) {
+		
+		$post_types = !empty( $_GET['types'] ) ? explode( ',', $_GET['types'] ) : array( 'post' );
+		$posts = get_posts(array(
+			'posts_per_page' => 20,
+			'post_type' => $post_types,
+			'post_status' => 'publish',
+			'suppress_filters'	=> false,
+			's' => $s  
+		));
+	} else {
+		$post_types = !empty( $_GET['types'] ) ? ($_GET['types'] ) : array( 'post' );
+		$postsQuery = new WP_Query(array(
+			'posts_per_page' => 20,
+			'post_type' => $post_types,
+			'post_status' => 'publish',
+			'suppress_filters'	=> false,
+			's' => $s  
+		));
+		$posts = $postsQuery->posts;
+	}
+	//
+	
+	
 	$result = array();
-
+	
 	foreach ( $posts as $post ) {
 		$result[] = array(
 			'value' => $post->ID,

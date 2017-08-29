@@ -14,38 +14,21 @@
 	 * @return array
 	 */
 
-	function we_product_field_tab_general() {
+	function we_product_field_tab_attributes() {
 		return array(
 			array(
-				'name' => 'tpfw_checkbox',
-				'type' => 'checkbox',
-				'heading' => __( 'Checkbox:', 'tp-framework' ),
-				'value' => 0,
+				'name' => 'we_product_atts_title',
+				'type' => 'textfield',
+				'heading' => __( 'Name:', 'tp-framework' ),
+				'placeholder' => __( 'Enter 3 or more characters to search...', 'tp-framework' ),
+				'value' => "",
 				'desc' => __( 'A short description for single Checkbox', 'tp-framework' )
 			),
 			array(
-				'name' => 'autocomplete_2',
-				'type' => 'autocomplete',
-				'heading' => __( 'Autocomplete', 'tp-framework' ),
-				'value' => '',
-				'desc' => __( 'Ajax select', 'tp-framework' ),
-				'data' => array( 'post_type' => array( 'post' ) ),
-				'placeholder' => __( 'Enter 3 or more characters to search...', 'tp-framework' ),
-				'min_length' => 3
-			),
-			array(
-				'name' => 'tpfw_select',
-				'type' => 'select',
-				'heading' => __( 'Select:', 'tp-framework' ),
-				'value' => 'eric',
-				'desc' => __( 'A short description for Select box', 'tp-framework' ),
-				'options' => array(
-					'' => __( 'Select...', 'tp-framework' ),
-					'donna' => __( 'Show Text field', 'tp-framework' ),
-					'eric' => __( 'Show Textarea', 'tp-framework' ),
-					'charles' => __( 'Charles Wheeler', 'tp-framework' ),
-					'anthony' => __( 'Anthony Perkins', 'tp-framework' )
-				)
+				'name' => 'we_product_atts_excrept',
+				'type' => 'textarea',
+				'heading' => __( 'Excrept', 'tp-framework' ),
+				'desc' => __( 'A short description for single Checkbox', 'tp-framework' )
 			)
 		);
 	}
@@ -55,7 +38,7 @@
 	 */
 	function we_product_tab_general() {
 
-		$fields = we_product_field_tab_general();
+		$fields = we_product_field_tab_attributes();
 
 		$we_metabox = new Tpfw_Metabox( 
 			array(
@@ -85,7 +68,7 @@
 						'heading' => __( 'Up-sells', 'wpeasy' ),
 						'value' => '',
 						'desc' => __( 'Ajax select', 'tp-framework' ),
-						'data' => array( 'post_type' => 'product, post' ),
+						'data' => array( 'post_type' => array( 'product' ) ),
 						'placeholder' => __( 'Enter 3 or more characters to search...', 'tp-framework' ),
 						'min_length' => 3,
 						'group' => 'Linked Products'
@@ -95,8 +78,7 @@
 						'name' 		=> 'we_product_attributes',
 						'type' 		=> 'repeater',
 						'heading' 	=> __( 'Attributes', 'tp-framework' ),
-						'value' 	=> '',
-						'desc' 		=> '',
+						'desc' 		=> 'Attributes',
 						'group' 	=> 'Attributes',
 						'fields' 	=> $fields
 					),

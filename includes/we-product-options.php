@@ -82,7 +82,7 @@
 
 	}
 	// filter for sermon first page
-	add_filter("manage_edit-wpeasy-product_columns", "show_product_column");	
+	add_filter("manage_edit-product_columns", "show_product_column");	
 	function show_product_column($columns){
 		$columns = array(
 			"cb" 					=> "<input type=\"checkbox\" />",
@@ -103,10 +103,10 @@
 			the_post_thumbnail( array(50, 50) , array( 'class' => 'thumbail-wpeasy-product' ) );
 			break;
 			case "product-category":
-			echo get_the_term_list($post->ID, 'product_category', '', ', ','');
+			echo get_the_term_list($post->ID, 'product_cate', '', ', ','');
 			break;
 			case "product-price":
-			echo number_format( get_post_meta( $post->ID, 'cf_product_price', TRUE ), 0 ) . ' <sup>đ</sup>';
+			echo number_format( get_post_meta( $post->ID, 'we_product_price', TRUE ), 0 ) . ' <sup>đ</sup>';
 			break;
 			
 		}

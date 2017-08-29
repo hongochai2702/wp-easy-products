@@ -8,7 +8,7 @@
 
 global $post, $layers_post_meta_to_display; ?>
 
-<article id="product-<?php the_ID(); ?>" <?php post_class( 'product-news-item column span-3' ); ?>>
+<article id="product-<?php the_ID(); ?>" <?php post_class( 'product-news-item grid-item column span-4' ); ?>>
 	
 	<?php /**
 	* Display the Featured Thumbnail

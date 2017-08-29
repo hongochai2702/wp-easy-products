@@ -67,7 +67,7 @@ if ( '' != get_the_content() ) { ?>
 	</div>
 	<script type="text/javascript">
         jQuery(document).ready(function ($) {
-            $(".single-we-product .layout-tab-product .tab").click(function () {
+            $(".single-product .layout-tab-product .tab").click(function () {
                 var tab = $(this).attr("data-tab");
                 $(this).addClass("select");
                 $(this).siblings().removeClass("select");
