@@ -12,3 +12,16 @@ include_once ( WPEASY_INCLUDE_LOCAL . '/we-core-functions.php' );
 include_once ( WPEASY_INCLUDE_LOCAL . '/we-product-options.php' );
 include_once ( WPEASY_INCLUDE_LOCAL . '/we-template-settings.php' );
 
+
+/*
+ * Include class process data
+ * */
+global $weProductData;
+include_once ( WPEASY_INCLUDE_LOCAL . '/class-we-product-data.php' );
+$weProductData = new WE_Product_Data();
+if ( is_admin() ) {
+	// Load file in admin.
+} else {
+	//Load file in front.
+	
+}

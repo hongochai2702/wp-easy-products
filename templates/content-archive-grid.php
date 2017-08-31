@@ -8,19 +8,29 @@
 
 global $post, $layers_post_meta_to_display; ?>
 
-<article id="product-<?php the_ID(); ?>" <?php post_class( 'product-news-item grid-item column span-4' ); ?>>
-	
-	<?php /**
-	* Display the Featured Thumbnail
-	*/
-	echo layers_post_featured_media( array( 'postid' => get_the_ID(), 'wrap_class' => 'thumbnail push-bottom', 'size' => 'wpeasy-product-image-catalog-thumb' ) ); ?>
-	<?php do_action('layers_before_list_post_title'); ?>
-	<div class="post-content">
-		<header class="article-title">
-		<?php do_action('layers_before_list_title'); ?>
-		<h2 class="heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-		<?php do_action('layers_after_list_title'); ?>
-	</header>
-	<?php do_action('layers_after_list_post_title'); ?>
-	</div>
+<?php do_action('weasy_before_list_product'); ?>
+<article id="product-<?php the_ID(); ?>" <?php post_class( 'product chili-item isotope-item product-item column span-4' ); ?>>
+	<span class="onsale">Sale!</span>
+	<figure class="woocom-project">
+		<div class="woo-buttons-on-img">
+				<?php /**
+				* Display the Featured Thumbnail
+				*/
+				global $weProductData; ?>
+				<a href="<?php the_permalink(); ?>"><img data-src="<?php echo $weProductData->get_the_post_thumbnail_url(get_the_ID()); ?>" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
+				<img data-src="http://wordpress.io/wp-plugin/wp-content/uploads/2017/08/hODreXI.jpg" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="show-on-hover back-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
+				</a>
+				
+			<div class="woo-buttons">
+				<a rel="nofollow" href="<?php the_permalink(); ?>?add-to-cart=50017" class="product_type_simple add_to_cart_button"> <span class="filter-popup">Add to cart</span></a>
+			</div>
+		</div>
+		<figcaption class="woocom-list-content">
+			<?php do_action('weasy_before_list_title'); ?>
+			<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+		 	<span class="price"><span class="woocommerce-Price-amount amount">$ 69.69</span></span>
+			<?php do_action('weasy_after_list_title'); ?>
+		</figcaption>
+	</figure>
 </article>
+<?php do_action('weasy_after_list_product'); ?>

@@ -10,16 +10,14 @@ get_header(); ?>
 <?php get_template_part( 'partials/header' , 'page-title' ); ?>
 <?php do_action('before_layers_builder_widgets'); ?>
 
-<section class="container content-main archive-wpeasy-product cart-btn-on-img accent-gradient wc-img-hover clearfix" ng-app="WEProducts">
+<section class="container content-main archive-wpeasy-product clearfix" ng-app="WEProducts">
 	<?php get_sidebar( 'left' ); ?>
 	
 	<?php if( have_posts() ) : ?>
 		<div class="we-product-layout">
-			<div class="row isotope">
 			<?php while( have_posts() ) : the_post(); ?>
 				<?php we_get_template_part( 'content-archive', 'grid' ); ?>
 			<?php endwhile; // while has_post(); ?>
-			</div>
 		</div>
 	<?php the_posts_pagination(); ?>
 	<?php endif; // if has_post() ?>
