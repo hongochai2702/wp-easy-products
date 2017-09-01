@@ -21,7 +21,8 @@ get_header(); ?>
 			<?php endwhile; // while has_post(); ?>
 			</div>
 		</div>
-	<?php the_posts_pagination(); ?>
+		<div id="loading"></div>
+		<?php the_posts_pagination(); ?>
 	<?php endif; // if has_post() ?>
 
 	<?php get_sidebar( 'right' ); ?>

@@ -7,6 +7,7 @@
  */
 include_once ( WPEASY_INCLUDE_LOCAL . '/framework/tp-framework.php' );
 include_once ( WPEASY_INCLUDE_LOCAL . '/we-product-fields.php' );
+include_once ( WPEASY_INCLUDE_LOCAL . '/we-admin-customizer-fields.php' );
 
 include_once ( WPEASY_INCLUDE_LOCAL . '/we-core-functions.php' );
 include_once ( WPEASY_INCLUDE_LOCAL . '/we-product-options.php' );

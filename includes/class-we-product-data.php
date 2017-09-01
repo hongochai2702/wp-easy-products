@@ -6,7 +6,30 @@ class WE_Product_Data {
 		
 		add_action( 'wp_ajax_we_get_products', array( $this, 'we_get_products' ) );
 		add_action( 'wp_ajax_nopriv_we_get_products', array( $this, 'we_get_products' ) );
+		
+		add_action( 'wp_ajax_we_get_products_paging', array( $this, 'we_get_products_paging' ) );
+		add_action( 'wp_ajax_nopriv_we_get_products_paging', array( $this, 'we_get_products_paging' ) );
 	}
+	
+	public function we_get_products_paging() {
+		
+		$per_pages = ( !empty($_GET['per_pages']) ) ? sanitize_text_field($_GET['per_pages']): 6;
+		$paged = ( !empty($_GET['paged']) ) ? sanitize_text_field($_GET['paged']): 1;
+		
+		$posts = get_posts(array(
+				'posts_per_page' 	=> $per_pages,
+				'post_type' 		=> 'product',
+				'paged'				=> $paged,
+				'post_status' 		=> 'publish',
+				'suppress_filters'	=> true
+			));
+		$result = array();
+		
+		require_once WPEASY_VIEWS_LOCAL . '/product-paging.php';
+		die();
+		
+	}
+	
 	
 	public function we_get_products() {
 		

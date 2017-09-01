@@ -1,23 +1,13 @@
-<?php
-/**
- * This template is used for displaying posts in post lists
- *
- * @package Layers
- * @since Layers 1.0.0
- */
-
-global $post, $layers_post_meta_to_display; ?>
-
-<?php do_action('weasy_before_list_product'); ?>
-<article id="product-<?php the_ID(); ?>" <?php post_class( 'product chili-item isotope-item product-item column span-4' ); ?>>
+<?php foreach ( $posts as $post ) : ?>
+<article id="product-<?php echo $post->ID; ?>" <?php post_class( 'product chili-item isotope-item product-item column span-4' ); ?>>
 	<span class="onsale">Sale!</span>
 	<figure class="woocom-project">
 		<div class="woo-buttons-on-img">
 				<?php /**
 				* Display the Featured Thumbnail
 				*/
-				global $weProductData; ?>
-				<a href="<?php the_permalink(); ?>"><img data-src="<?php echo $weProductData->get_the_post_thumbnail_url(get_the_ID()); ?>" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
+				 ?>
+				<a href="<?php echo get_the_permalink($post->ID); ?>"><img src="<?php echo $this->get_the_post_thumbnail_url($post->ID); ?>"  class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
 				<img src="http://wordpress.io/wp-plugin/wp-content/uploads/2016/01/merlion-singapore.jpg" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="show-on-hover back-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
 				</a>
 				
@@ -27,10 +17,10 @@ global $post, $layers_post_meta_to_display; ?>
 		</div>
 		<figcaption class="woocom-list-content">
 			<?php do_action('weasy_before_list_title'); ?>
-			<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+			<h4 class="entry-title"><a href="<?php echo get_the_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>" rel="bookmark"><?php echo $post->post_title; ?></a></h4>
 		 	<span class="price"><span class="woocommerce-Price-amount amount">$ 69.69</span></span>
 			<?php do_action('weasy_after_list_title'); ?>
 		</figcaption>
 	</figure>
 </article>
-<?php do_action('weasy_after_list_product'); ?>
+<?php endforeach; ?>

@@ -18,6 +18,7 @@ define('WPEASY_LOCAL', plugin_dir_path( __FILE__ ));
 
 define('WPEASY_ASSETS_URL', WPEASY_URL . '/assets');
 define('WPEASY_INCLUDE_LOCAL', WPEASY_LOCAL . '/includes');
+define('WPEASY_VIEWS_LOCAL', WPEASY_INCLUDE_LOCAL . '/views');
 define('WPEASY_TEMPLATES_LOCAL', WPEASY_LOCAL . '/templates');
 
 // add activation hook
