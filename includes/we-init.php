@@ -17,9 +17,11 @@ include_once ( WPEASY_INCLUDE_LOCAL . '/we-template-settings.php' );
 /*
  * Include class process data
  * */
-global $weProductData;
+global $weProductData, $weCustomizerOptions;
 include_once ( WPEASY_INCLUDE_LOCAL . '/class-we-product-data.php' );
+include_once ( WPEASY_INCLUDE_LOCAL . '/class-we-customizer-options.php' );
 $weProductData = new WE_Product_Data();
+$weCustomizerOptions = new WE_Customizer_Options();
 if ( is_admin() ) {
 	// Load file in admin.
 } else {

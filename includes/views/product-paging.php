@@ -7,8 +7,8 @@
 				* Display the Featured Thumbnail
 				*/
 				 ?>
-				<a href="<?php echo get_the_permalink($post->ID); ?>"><img src="<?php echo $this->get_the_post_thumbnail_url($post->ID); ?>"  class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
-				<img src="http://wordpress.io/wp-plugin/wp-content/uploads/2016/01/merlion-singapore.jpg" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="show-on-hover back-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
+				<a href="<?php echo get_the_permalink($post->ID); ?>"><img data-src="<?php echo $this->get_the_post_thumbnail_url($post->ID); ?>" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
+				<img data-src="http://wordpress.io/wp-plugin/wp-content/uploads/2016/01/merlion-singapore.jpg" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="show-on-hover back-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
 				</a>
 				
 			<div class="woo-buttons">

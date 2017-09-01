@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
 	        $.get(ajaxPagingURI, function (data) {
 	            if (data !== '') {
 	                $(".isotope").isotope('insert', $(data));
-	                $("img.lazy").lazyload({
+	                $("img.iso-lazy-load").lazyload({
 	                    effect: "fadeIn"
 	                });
 	            }
@@ -31,14 +31,14 @@ jQuery(document).ready(function($) {
 	}
 	
 	$(window).scroll(function () {
-		if ($(window).scrollTop() >= $(document).height() - $(window).height() - 800) {
-	    if ($('.we-product-layout').length > 0) {
-	        loadProducts();
-	    }
-	    //if ($('#template-grid').attr('data-loadmore') === "1") {
-	        //loadFreeProducts();
-	    //}
-	    }
+		// Check if category display type 'infinite-scroll'. global variable in file archive-product.
+		if ( we_catalog_display_type == 'infinite-scroll' ) {
+			if ($(window).scrollTop() >= $(document).height() - $(window).height() - 800) {
+			    if ($('.we-product-layout').length > 0) {
+			        loadProducts();
+			    }
+		    }
+		}
 	});
 
 	$("img.iso-lazy-load").lazyload();

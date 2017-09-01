@@ -5,8 +5,14 @@
  * @package Layers
  * @since Layers 1.0.0
  */
-
+global $weCustomizerOptions;
+$weSetting = $weCustomizerOptions->getSettings();
 get_header(); ?>
+<script type="text/javascript">
+<!-- WE JAVASCRIPT CONFIG
+	var we_catalog_display_type = '<?php echo $weSetting['we_catalog_display_type']; ?>';
+//-->
+</script>
 <?php get_template_part( 'partials/header' , 'page-title' ); ?>
 <?php do_action('before_layers_builder_widgets'); ?>
 
@@ -21,8 +27,17 @@ get_header(); ?>
 			<?php endwhile; // while has_post(); ?>
 			</div>
 		</div>
-		<div id="loading"></div>
-		<?php the_posts_pagination(); ?>
+		
+		<?php if ( $weSetting['we_catalog_display_type'] == 'pagination' ) : ?>
+			<!-- Type: pagination -->
+			<?php the_posts_pagination(); ?>
+		<?php elseif ( $weSetting['we_catalog_display_type'] == 'infinite-scroll' ) : ?>
+			<!-- Type: infinite-scroll -->
+			<div id="loading"></div>
+		<?php elseif ( $weSetting['we_catalog_display_type'] == 'load-more' ) : ?>
+			<!-- Type: load-more -->
+			<button type="button" class="button button-loadmore" id="productLoadMore">Load More</button>
+		<?php endif; // if has_post() ?>
 	<?php endif; // if has_post() ?>
 
 	<?php get_sidebar( 'right' ); ?>
