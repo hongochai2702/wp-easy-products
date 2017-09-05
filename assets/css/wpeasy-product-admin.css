@@ -1,5 +1,23 @@
 /* Admin CSS */
-/**
- * Product Data CSS.
- * ...
- */
+/*
+* Customize Custom post type PRODUCT.
+* URL: edit.php?post_type=product
+*/
+
+/*
+- Custom Column WP List Product.
+*/
+#product-image, #product-price{
+	width: 4.4em;
+}
+#product-category { width: 16em; }
+
+/*
+- Custom fields in Customizer Control.
+*/
+#customize-control-we_catalog_layout .tpfw-image_select label img ,
+#customize-control-we_catalog_sidebar_layout .tpfw-image_select label img ,
+#customize-control-we_product_layout_sidebar .tpfw-image_select label img ,
+#customize-control-we_product_layout .tpfw-image_select label img{
+	width: 65px;
+}

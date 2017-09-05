@@ -6,8 +6,7 @@
  * @since Layers 1.0.0
  */
 
-global $post, $layers_post_meta_to_display;
-?>
+global $post, $layers_post_meta_to_display; ?>
 
 <?php do_action('weasy_before_list_product'); ?>
 <article id="product-<?php the_ID(); ?>" <?php post_class( 'product chili-item isotope-item product-item column span-4' ); ?>>

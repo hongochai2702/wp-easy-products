@@ -37,9 +37,18 @@ if( !function_exists('wpeasy_load_textdomain') ){
 require_once( WPEASY_INCLUDE_LOCAL . '/we-init.php' );
 //require_once( WPEASY_SHORTCODE_LOCAL. '/shortcode-generator.php' );
 
-add_action( 'wp_enqueue_scripts', 'wpeasy_enqueue_script' );
-if( !function_exists('wpeasy_enqueue_script') ){
-	function wpeasy_enqueue_script(){
+add_action( 'admin_enqueue_scripts', 'wpeasy_admin_enqueue_scripts' );
+if( !function_exists('wpeasy_admin_enqueue_scripts') ){
+    function wpeasy_admin_enqueue_scripts() {
+        global $post_type;
+        if( 'product' == $post_type || is_customize_preview() ) {
+            wp_enqueue_style('wpeasy-admin', WPEASY_ASSETS_URL . '/css/wpeasy-product-admin.css');
+        }
+    }
+}
+add_action( 'wp_enqueue_scripts', 'wpeasy_enqueue_scripts' );
+if( !function_exists('wpeasy_enqueue_scripts') ){
+	function wpeasy_enqueue_scripts(){
 		wp_register_style('wpeasy-front', WPEASY_ASSETS_URL . '/css/wpeasy-product-front.css');
 		wp_register_script('wpeasy-main', WPEASY_ASSETS_URL . '/js/main.js');
 		wp_register_script('wpeasy-layouts', WPEASY_ASSETS_URL . '/js/layouts.js');
@@ -49,7 +58,6 @@ if( !function_exists('wpeasy_enqueue_script') ){
 		wp_register_script('wpeasy-underscore', WPEASY_ASSETS_URL . '/js/underscore-min.js');
 		wp_register_script('wpeasy-isotope', WPEASY_ASSETS_URL . '/js/isotope.pkgd.min.js');
 		
-		//wp_register_script('wpeasy-isotope-infinite-scroll', WPEASY_ASSETS_URL . '/js/infinite-scroll.pkgd.min.js');
 		//wp_enqueue_script('wpeasy-underscore');
 		//wp_enqueue_script('wpeasy-angular-core');
 		wp_enqueue_script('wpeasy-isotope');
@@ -63,7 +71,7 @@ if( !function_exists('wpeasy_enqueue_script') ){
 		if ( is_singular('product') || is_tax( 'product_cate' )  ) {
 			wp_enqueue_style('wpeasy-front');
 		}
-        
+		
 	}
 }
 
