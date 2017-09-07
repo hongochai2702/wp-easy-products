@@ -73,6 +73,10 @@
 .catalog-grid .entry-title a:hover {
     color: #1ebbf0;
 }
+#productLoadMore {
+	display: block;
+	margin: auto;
+}
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
     display: block;
 }
@@ -83,7 +87,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 }
 .catalog-grid .wc-img-hover .woo-buttons-on-img {
     overflow: hidden;
-    min-height: 230px;
+    /*min-height: 230px;*/
     max-height: 250px;
 }
 .catalog-grid .wc-img-hover .woocom-project img {
@@ -184,6 +188,44 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     line-height: 25px;
 }
 
+
+/* ============================== */
+/* Single List Style */
+/* ============================== */
+.catalog-list {
+
+}
+.catalog-list .archive-wpeasy-product {}
+.catalog-list .product-item { margin-right: 15px; max-height: 250px;}
+.catalog-list .product-item:last-child { margin: 0; }
+.catalog-list .woocom-project {
+   display: -webkit-flex;
+   display: -moz-flex;
+   display: -ms-flex;
+   display: -o-flex;
+   display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.catalog-list .woocom-project .woo-buttons-on-img{
+    width: 38%;
+    margin-right: 2%;
+}
+.catalog-list .woocom-project .woo-buttons-on-img > a{}
+.catalog-list .woocom-project .woo-buttons-on-img img{}
+.catalog-list .woocom-project .woo-buttons-on-img .woo-buttons{}
+.catalog-list .woocom-project .woo-buttons-on-img .woo-buttons .add_to_cart_button{}
+.catalog-list .woocom-project .woo-buttons-on-img .woo-buttons .filter-popup{}
+
+.catalog-list .woocom-project .woocom-list-content{
+    width: 60%;
+}
+.catalog-list .woocom-project .woocom-list-content .entry-title{}
+.catalog-list .woocom-project .woocom-list-content .entry-title a{}
+.catalog-list .woocom-project .woocom-list-content .price{}
+.catalog-list .woocom-project .woocom-list-content .price .amount{}
 
 /* ============================== */
 /* Single Product Style */

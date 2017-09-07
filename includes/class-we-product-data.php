@@ -12,7 +12,10 @@ class WE_Product_Data {
 	}
 	
 	public function we_get_products_paging() {
-		
+		// Global variable.
+		global $weCustomizerOptions;
+		$weSetting 		= $weCustomizerOptions->getSettings();
+		$orderProducts 	= json_decode($weSetting['we_catalog_product_order'] , TRUE); // Order +  Order by.
 		$per_pages = ( !empty($_GET['per_pages']) ) ? sanitize_text_field($_GET['per_pages']): 6;
 		$paged = ( !empty($_GET['paged']) ) ? sanitize_text_field($_GET['paged']): 1;
 		
@@ -21,7 +24,9 @@ class WE_Product_Data {
 				'post_type' 		=> 'product',
 				'paged'				=> $paged,
 				'post_status' 		=> 'publish',
-				'suppress_filters'	=> true
+				'suppress_filters'	=> true,
+				'orderby' 			=> $orderProducts['orderby'],
+    			'order'   			=> $orderProducts['order']
 			));
 		$result = array();
 		

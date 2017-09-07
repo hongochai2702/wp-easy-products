@@ -1,5 +1,70 @@
 <?php
+
 define('WC_TEMPLATE_DEBUG_MODE', FALSE);
+
+/**
+ * Check customizer and page template settings before displaying a sidebar
+ *
+ * @param   int     $sidebar                Sidebar slug to check
+ * @param   string $container_class       Sidebar container class
+ * @return  html    $sidebar                Sidebar template
+ */
+if( !function_exists( 'we_maybe_get_sidebar' ) ) {
+	function we_maybe_get_sidebar( $sidebar = 'we-sidebar-archive-left', $container_class = 'column', $return = FALSE ) {
+
+		global $post;
+
+		$show_sidebar = we_can_show_sidebar( $sidebar );
+		$sidebar_slug = WE_SIDEBAR . '-archive-';
+		
+		if( TRUE == $show_sidebar ) { ?>
+			<?php if( is_active_sidebar( $sidebar_slug . $sidebar ) ) { ?>
+				<div class="<?php echo esc_attr( $container_class ); ?>">
+			<?php } ?>
+				<?php dynamic_sidebar( $sidebar_slug . $sidebar ); ?>
+			<?php if( is_active_sidebar( $sidebar_slug . $sidebar ) ) { ?>
+				</div>
+			<?php } ?>
+		<?php }
+	}
+} // we_get_header_class
+
+/**
+ * Set posts per page for WE Product
+ *
+ * @access public
+ * @param mixed $sidebar
+ */
+function we_can_show_sidebar( $sidebar = 'left' ) {
+	global $weCustomizerOptions;
+	$show_sidebar = FALSE;
+	$weSetting = $weCustomizerOptions->getSettings();
+	if ( $weSetting['we_catalog_sidebar_layout'] == $sidebar ) {
+		$show_sidebar = TRUE;
+	}
+	return $show_sidebar;
+}
+
+/**
+ * Set posts per page for WE Product
+ *
+ * @access public
+ * @param mixed $query
+ */
+function set_posts_per_page_for_product( $query ) {
+	global $weCustomizerOptions;
+	
+	// Customizer setting.
+	$weSetting = $weCustomizerOptions->getSettings();
+	$orderProducts 	= json_decode($weSetting['we_catalog_product_order'] , TRUE); // Order +  Order by.
+	
+	if ( !is_admin() && $query->is_main_query() && is_tax( 'product_cate' ) ) {
+		$query->set( 'posts_per_page', $weSetting['we_catalog_display_number'] );
+		$query->set( 'orderby', $orderProducts['orderby'] );
+		$query->set( 'order', $orderProducts['order'] );
+	}
+}
+add_action( 'pre_get_posts', 'set_posts_per_page_for_product' );
 
 /**
  * Get template part (for templates like the shop-loop).
@@ -13,7 +78,7 @@ function we_get_template_part( $slug, $name = '' ) {
 
 	// Look in yourtheme/slug-name.php and yourtheme/woocommerce/slug-name.php
 	/*if ( $name && ! WC_TEMPLATE_DEBUG_MODE ) {
-		$template = locate_template( array( "{$slug}-{$name}.php", WC()->template_path() . "{$slug}-{$name}.php" ) );
+	$template = locate_template( array( "{$slug}-{$name}.php", WC()->template_path() . "{$slug}-{$name}.php" ) );
 	}*/
 
 	// Get default slug-name.php
@@ -23,7 +88,7 @@ function we_get_template_part( $slug, $name = '' ) {
 
 	// If template file doesn't exist, look in yourtheme/slug.php and yourtheme/woocommerce/slug.php
 	/*if ( ! $template && ! WC_TEMPLATE_DEBUG_MODE ) {
-		$template = locate_template( array( "{$slug}.php", WC()->template_path() . "{$slug}.php" ) );
+	$template = locate_template( array( "{$slug}.php", WC()->template_path() . "{$slug}.php" ) );
 	}*/
 
 	// Allow 3rd party plugin filter template file from their plugin
@@ -93,10 +158,10 @@ function we_locate_template( $template_name, $template_path = '', $default_path 
 
 	// Look within passed path within the theme - this is priority
 	$template = locate_template(
-		array(
-			trailingslashit( $template_path ) . $template_name,
-			$template_name
-		)
+	array(
+	trailingslashit( $template_path ) . $template_name,
+	$template_name
+	)
 	);
 
 	// Get default template

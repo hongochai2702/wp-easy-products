@@ -111,3 +111,24 @@
 			
 		}
 	}
+	
+	// Register sidebar for product.
+	register_sidebar(array(
+	    'name' => __( 'WE Left sidebar', 'weasy' ),
+	    'id' => 'we-sidebar-archive-left',
+	    'description' => __( 'Sidebar description', 'weasy' ),
+	    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+	    'after_widget' => '</section>',
+	    'before_title' => '<h4 class="widget-title">',
+	    'after_title' => '</h4>'
+	));
+	
+	register_sidebar(array(
+	    'name' => __( 'WE Right sidebar', 'weasy' ),
+	    'id' => 'we-sidebar-archive-right',
+	    'description' => __( 'Sidebar description', 'weasy' ),
+	    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	    'after_widget' => '</aside>',
+	    'before_title' => '<h4 class="widget-title">',
+	    'after_title' => '</h4>'
+	));

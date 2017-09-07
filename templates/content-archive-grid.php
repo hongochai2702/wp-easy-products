@@ -6,11 +6,15 @@
  * @since Layers 1.0.0
  */
 
-global $post, $layers_post_meta_to_display;
+global $post, $layers_post_meta_to_display, $weCustomizerOptions;
+
+// Customizer setting.
+$weSetting = $weCustomizerOptions->getSettings();
+$column = $weCustomizerOptions->get_column_items();
 ?>
 
 <?php do_action('weasy_before_list_product'); ?>
-<article id="product-<?php the_ID(); ?>" <?php post_class( 'product chili-item isotope-item product-item column span-4' ); ?>>
+<article id="product-<?php the_ID(); ?>" <?php post_class( 'product chili-item isotope-item product-item column ' . $column ); ?>>
 	<span class="onsale">Sale!</span>
 	<figure class="woocom-project">
 		<div class="woo-buttons-on-img">

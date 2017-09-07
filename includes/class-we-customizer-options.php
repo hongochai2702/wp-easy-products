@@ -27,7 +27,6 @@ class WE_Customizer_Options {
 	
 	public function getSettings() {
 	    //$sizes = $this->ajax_thumbnail_rebuild_get_sizes();
-	   
 		return $this->_SettingOptions;
 	}
 	
@@ -55,6 +54,26 @@ class WE_Customizer_Options {
 	    return $layout;
 	}
 	
+	public function get_column_items() {
+		$classes = '';
+		if ( !isset($this->_SettingOptions['we_catalog_display_column']) || empty($this->_SettingOptions['we_catalog_display_column']) ) return $classes = 'span-4';
+		if ( (isset($this->_SettingOptions['we_catalog_layout']) || !empty($this->_SettingOptions['we_catalog_layout']) ) && $this->_SettingOptions['we_catalog_layout'] == 'list' ) return $classes = 'span-4';
+		
+		// Check column display product.
+		if ( 1 == $this->_SettingOptions['we_catalog_display_column'] ) {
+			$classes = $classes = 'span-12';
+		} else if ( 2 == $this->_SettingOptions['we_catalog_display_column'] ) {
+			$classes = $classes = 'span-6';
+		} else if ( 3 == $this->_SettingOptions['we_catalog_display_column'] ) {
+			$classes = $classes = 'span-4';
+		} else if ( 4 == $this->_SettingOptions['we_catalog_display_column'] ) {
+			$classes = $classes = 'span-3';
+		}  else if ( 6 == $this->_SettingOptions['we_catalog_display_column'] ) {
+			$classes = $classes = 'span-2';
+		}
+		
+		return $classes;
+	}
 	public function ajax_thumbnail_rebuild_get_sizes() {
     	global $_wp_additional_image_sizes;
     

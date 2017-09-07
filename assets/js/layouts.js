@@ -1,17 +1,17 @@
 jQuery(document).ready(function($) {
-	var wpajaxurl = '/wp-plugins/wp-admin/admin-ajax.php';
+	var wpajaxurl = '/wp-plugin/wp-admin/admin-ajax.php';
 	var page = 1;
 	var inAjaxProcessing = false;
 	
 	function loadProducts() {
 	    var action = 'we_get_products_paging';
-	    var per_pages = 10;
+	    var per_pages = we_catalog_display_number;
 	
 	    if (page > -1 && !inAjaxProcessing) {
 	        inAjaxProcessing = true;
 	        page++;
 	        var ajaxPagingURI = wpajaxurl + '?action=we_get_products_paging&per_pages=' + per_pages + '&paged=' + page;
-	        $('div#loading').html('<p><img src="/wp-plugins/wp-content/plugins/wp-easy-products/assets/images/Facebook.gif"></p>');
+	        $('div#loading').html('<p><img src="/wp-plugin/wp-content/plugins/wp-easy-products/assets/images/Facebook.gif"></p>');
 	        $.get(ajaxPagingURI, function (data) {
 	            if (data !== '') {
 	                $(".isotope").isotope('insert', $(data));
@@ -21,9 +21,10 @@ jQuery(document).ready(function($) {
 	            }
 	            else {
 	                page = -1;
-	                $(".we-product-layout").append($("<div class='clearfix'></div>"));
+	                $("#we-product-layout").append($("<div class='clearfix'></div>"));
+	                $("#productLoadMore").remove();
 	            }
-	
+	            
 	            inAjaxProcessing = false;
 	            $('div#loading').empty();
 	        });
@@ -34,15 +35,17 @@ jQuery(document).ready(function($) {
 		// Check if category display type 'infinite-scroll'. global variable in file archive-product.
 		if ( we_catalog_paging_display_type == 'infinite-scroll' ) {
 			if ($(window).scrollTop() >= $(document).height() - $(window).height() - 800) {
-			    if ($('.we-product-layout').length > 0) {
+			    if ($('#we-product-layout').length > 0) {
 			        loadProducts();
 			    }
 		    }
 		} else if ( we_catalog_paging_display_type == 'load-more' ) {
 			$("#productLoadMore").on("click", function(e) {
 				e.preventDefault();
-				if ($('.we-product-layout').length > 0) {
+				$('div#loading').html('<p><img src="/wp-plugin/wp-content/plugins/wp-easy-products/assets/images/Facebook.gif"></p>');
+				if ($('#we-product-layout').length > 0) {
 			        loadProducts();
+			        
 			    } else {
 			    	$("#productLoadMore").remove();
 			    }
