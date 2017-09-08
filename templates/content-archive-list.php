@@ -32,6 +32,9 @@ $column = $weCustomizerOptions->get_column_items();
 			<?php do_action('weasy_before_list_title'); ?>
 			<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
 		 	<span class="price"><span class="woocommerce-Price-amount amount">$ 69.69</span></span>
+		 	<div class="woocommerce-product-details__short-description">
+                <p>Phasellus leo odio, maximus a dui pellentesque, ornare tincidunt ante. Nullam venenatis tortor vitae scelerisque rhoncus. Sed ut suscipit ex, eget porta urna. Aenean tempor at ante non dapibus.</p>
+            </div>
 			<?php do_action('weasy_after_list_title'); ?>
 		</figcaption>
 	</figure>

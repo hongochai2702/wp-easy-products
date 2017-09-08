@@ -39,9 +39,7 @@ function we_customize_register( $wp_customize ) {
 		        'desc' => __( 'This is a demo for sidebar layout.', 'wpeasy' ),
 		        'options' => array(
 		            'list' => TPFW_URL . 'sample/assets/opt-1.jpg',
-		            'grid' => TPFW_URL . 'sample/assets/opt-2.jpg',
-		            'masory' => TPFW_URL . 'sample/assets/opt-3.jpg',
-		            'overlay' => TPFW_URL . 'sample/assets/opt-3.jpg',
+		            'grid' => TPFW_URL . 'sample/assets/opt-2.jpg'
 		        ),
 		        'value' => 'grid'//default
 		    ),
@@ -86,9 +84,9 @@ function we_customize_register( $wp_customize ) {
 		            '4'   => __( '4 column', 'wpeasy' ),
 		            '6'   => __( '6 column', 'wpeasy' )
 		        ),
-		        'dependency' => array(
+		        /* 'dependency' => array(
 		            'we_catalog_layout' => array( 'values' => array( 'grid','masory','overlay' ) ),
-		        )
+		        ) */
 		    ),
 		    array(
 		        'name' => 'we_catalog_display_number',

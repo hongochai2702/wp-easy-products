@@ -127,8 +127,12 @@
 	    'name' => __( 'WE Right sidebar', 'weasy' ),
 	    'id' => 'we-sidebar-archive-right',
 	    'description' => __( 'Sidebar description', 'weasy' ),
-	    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-	    'after_widget' => '</aside>',
+	    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+	    'after_widget' => '</section>',
 	    'before_title' => '<h4 class="widget-title">',
 	    'after_title' => '</h4>'
 	));
+	
+	// add image size.
+	add_image_size('weasy_image_size_thumb', 400, 400, true);
+	

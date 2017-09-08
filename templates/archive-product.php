@@ -10,13 +10,14 @@ global $weCustomizerOptions;
 // Customizer setting.
 $weSetting = $weCustomizerOptions->getSettings();
 $layout = $weCustomizerOptions->get_catalog_layout();
-$isotope = ( $weSetting['we_catalog_layout'] != 'list' ) ? 'isotope' : 'isotope';
+$isotope = ( $weSetting['we_catalog_layout'] != 'list' ) ? 'isotope' : '';
 $sidebar = ( $weSetting['we_catalog_sidebar_layout'] != 'none' ) ? $weSetting['we_catalog_sidebar_layout'] : '';
 
 get_header(); ?>
 <script type="text/javascript">
 //<!-- WE JAVASCRIPT CONFIG
 	var we_catalog_paging_display_type 	= '<?php echo $weSetting['we_catalog_paging_display_type']; ?>' ,
+		we_catalog_layout 				= '<?php echo $weSetting['we_catalog_layout']; ?>' ,
 		we_catalog_display_number		= '<?php echo $weSetting['we_catalog_display_number']; ?>';
 //-->
 </script>
@@ -30,7 +31,7 @@ get_header(); ?>
 	
 	<?php if( have_posts() ) : ?>
 		<div id="we-product-layout" class="catalog-<?php echo $layout; ?> <?php echo !empty($sidebar) ? 'span-9 column': 'span-12'; ?>">
-			<div class="row cart-btn-on-img accent-gradient wc-img-hover <?php echo $isotope; ?>" >
+			<div id="list-products" class="row cart-btn-on-img accent-gradient wc-img-hover <?php echo $isotope; ?>" >
 			<?php while( have_posts() ) : the_post(); ?>
 				<?php we_get_template_part( 'content-archive', $layout); ?>
 			<?php endwhile; // while has_post(); ?>

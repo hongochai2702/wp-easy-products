@@ -2,6 +2,43 @@
 
 define('WC_TEMPLATE_DEBUG_MODE', FALSE);
 
+
+/**
+ * Check customizer and page template settings before displaying a sidebar
+ *
+ * @param   int     $sidebar                Sidebar slug to check
+ * @param   string $container_class       Sidebar container class
+ * @return  html    $sidebar                Sidebar template
+ */
+// add WPEASY to body class
+add_filter('body_class', 'wpeasy_body_class');
+if( !function_exists('wpeasy_body_class') ){
+	function wpeasy_body_class( $classes ){
+		$classes[] = 'wpeasy-body';
+		return $classes;
+	}
+}
+
+
+/**
+ * Check customizer and page template settings before displaying a sidebar
+ *
+ * @param   int     $sidebar                Sidebar slug to check
+ * @param   string $container_class       Sidebar container class
+ * @return  html    $sidebar                Sidebar template
+ */
+
+if ( ! function_exists( 'is_version' ) ) {
+	function is_version( $version = '3.1' ) {
+		global $wp_version;
+		
+		if ( version_compare( $wp_version, $version, '>=' ) ) {
+			return false;
+		}
+		return true;
+	}
+}
+
 /**
  * Check customizer and page template settings before displaying a sidebar
  *
@@ -39,8 +76,10 @@ function we_can_show_sidebar( $sidebar = 'left' ) {
 	global $weCustomizerOptions;
 	$show_sidebar = FALSE;
 	$weSetting = $weCustomizerOptions->getSettings();
+	
 	if ( $weSetting['we_catalog_sidebar_layout'] == $sidebar ) {
 		$show_sidebar = TRUE;
+		
 	}
 	return $show_sidebar;
 }
