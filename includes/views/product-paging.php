@@ -11,7 +11,7 @@
 				* Display the Featured Thumbnail
 				*/
 				 ?>
-				<a href="<?php echo get_the_permalink($post->ID); ?>"><img data-src="<?php echo $this->get_the_post_thumbnail_url($post->ID); ?>" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
+				<a href="<?php echo get_the_permalink($post->ID); ?>"><img data-src="<?php echo $this->get_the_post_thumbnail_url($post->ID, 'layers-landscape-medium'); ?>" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
 				</a>
 				
 			<div class="woo-buttons">

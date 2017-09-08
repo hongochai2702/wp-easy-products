@@ -21,7 +21,7 @@ $column = $weCustomizerOptions->get_column_items();
 				* Display the Featured Thumbnail
 				*/
 				global $weProductData; ?>
-				<a href="<?php the_permalink(); ?>"><img data-src="<?php echo $weProductData->get_the_post_thumbnail_url(get_the_ID()); ?>" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
+				<a href="<?php the_permalink(); ?>"><img data-src="<?php echo $weProductData->get_the_post_thumbnail_url(get_the_ID(), 'layers-landscape-medium'); ?>" src="<?php echo WPEASY_ASSETS_URL ?>/images/Facebook.gif" class="iso-lazy-load front-image iso-lazy-load preload-me iso-layzr-loaded" alt="" style="will-change: auto;">
 				</a>
 				
 			<div class="woo-buttons">
@@ -32,6 +32,9 @@ $column = $weCustomizerOptions->get_column_items();
 			<?php do_action('weasy_before_list_title'); ?>
 			<h4 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
 		 	<span class="price"><span class="woocommerce-Price-amount amount">$ 69.69</span></span>
+		 	<div class="woocommerce-product-details__short-description">
+                <p>Phasellus leo odio, maximus a dui pellentesque, ornare tincidunt ante. Nullam venenatis tortor vitae scelerisque rhoncus. Sed ut suscipit ex, eget porta urna. Aenean tempor at ante non dapibus.</p>
+            </div>
 			<?php do_action('weasy_after_list_title'); ?>
 		</figcaption>
 	</figure>

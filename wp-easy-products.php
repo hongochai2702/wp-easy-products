@@ -15,7 +15,6 @@ if (!defined('ABSPATH')) exit;
 // define necessary variable for the site.
 define('WPEASY_URL', plugins_url('', __FILE__));
 define('WPEASY_LOCAL', plugin_dir_path( __FILE__ ));
-
 define('WPEASY_ASSETS_URL', WPEASY_URL . '/assets');
 define('WPEASY_INCLUDE_LOCAL', WPEASY_LOCAL . '/includes');
 define('WPEASY_VIEWS_LOCAL', WPEASY_INCLUDE_LOCAL . '/views');
@@ -33,64 +32,30 @@ if( !function_exists('wpeasy_load_textdomain') ){
 	}
 }
 
-// Load Class.
+/**
+ * Save the WEASYProducts class for later
+ */
+function wp_easy_product_option_init() {
+	/*
+	 * global $weProductData, $weCustomizerOptions;
+   	$weProductData 			= new WE_Product_Data();
+	$weCustomizerOptions 	= new WE_Customizer_Options();*/
+}
+add_action('init', 'wp_easy_product_option_init', 9);
+
+/**
+ * Save the WEASYProductsAdmin class for later
+ */
+function wp_easy_product_option_admin_init() {
+	// Do some thing...//
+	/*
+	 * global $weProductData, $weCustomizerOptions;
+   	$weProductData 			= new WE_Product_Data();
+	$weCustomizerOptions 	= new WE_Customizer_Options();*/
+}
+add_action('admin_init', 'wp_easy_product_option_admin_init');
+
+// INCLUDE INIT.
 require_once( WPEASY_INCLUDE_LOCAL . '/we-init.php' );
 //require_once( WPEASY_SHORTCODE_LOCAL. '/shortcode-generator.php' );
 
-add_action( 'admin_enqueue_scripts', 'wpeasy_admin_enqueue_scripts' );
-if( !function_exists('wpeasy_admin_enqueue_scripts') ){
-    function wpeasy_admin_enqueue_scripts() {
-        global $post_type;
-        if( 'product' == $post_type || is_customize_preview() ) {
-            wp_enqueue_style('wpeasy-admin', WPEASY_ASSETS_URL . '/css/wpeasy-product-admin.css');
-        }
-    }
-}
-add_action( 'wp_enqueue_scripts', 'wpeasy_enqueue_scripts' );
-if( !function_exists('wpeasy_enqueue_scripts') ){
-	function wpeasy_enqueue_scripts(){
-		wp_register_style('wpeasy-front', WPEASY_ASSETS_URL . '/css/wpeasy-product-front.css');
-		wp_register_script('wpeasy-main', WPEASY_ASSETS_URL . '/js/main.js');
-		wp_register_script('wpeasy-layouts', WPEASY_ASSETS_URL . '/js/layouts.js');
-		wp_register_script('wpeasy-lazyload', WPEASY_ASSETS_URL . '/js/lazyload.min.js');
-		
-		wp_register_script('wpeasy-angular-core', WPEASY_ASSETS_URL . '/js/angular/angular.min.js');
-		wp_register_script('wpeasy-underscore', WPEASY_ASSETS_URL . '/js/underscore-min.js');
-		wp_register_script('wpeasy-isotope', WPEASY_ASSETS_URL . '/js/isotope.pkgd.min.js');
-		
-		//wp_enqueue_script('wpeasy-underscore');
-		//wp_enqueue_script('wpeasy-angular-core');
-		wp_enqueue_script('wpeasy-isotope');
-		wp_enqueue_script('wpeasy-lazyload');
-		
-		if ( is_tax( 'product_cate' ) ) {
-			wp_enqueue_script('wpeasy-layouts');	
-			//wp_enqueue_script('wpeasy-main');
-		}
-		
-		if ( is_singular('product') || is_tax( 'product_cate' )  ) {
-			wp_enqueue_style('wpeasy-front');
-		}
-		
-	}
-}
-
-// add WPEASY to body class
-add_filter('body_class', 'wpeasy_body_class');
-if( !function_exists('wpeasy_body_class') ){
-	function wpeasy_body_class( $classes ){
-		$classes[] = 'wpeasy-body';
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'is_version' ) ) {
-	function is_version( $version = '3.1' ) {
-		global $wp_version;
-		
-		if ( version_compare( $wp_version, $version, '>=' ) ) {
-			return false;
-		}
-		return true;
-	}
-}

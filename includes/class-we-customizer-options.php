@@ -57,8 +57,7 @@ class WE_Customizer_Options {
 	public function get_column_items() {
 		$classes = '';
 		if ( !isset($this->_SettingOptions['we_catalog_display_column']) || empty($this->_SettingOptions['we_catalog_display_column']) ) return $classes = 'span-4';
-		if ( (isset($this->_SettingOptions['we_catalog_layout']) || !empty($this->_SettingOptions['we_catalog_layout']) ) && $this->_SettingOptions['we_catalog_layout'] == 'list' ) return $classes = 'span-4';
-		
+		if ( isset($this->_SettingOptions['we_catalog_layout']) && !empty($this->_SettingOptions['we_catalog_layout']) && ($this->_SettingOptions['we_catalog_layout'] == 'list')  ) return $classes = 'span-12';
 		// Check column display product.
 		if ( 1 == $this->_SettingOptions['we_catalog_display_column'] ) {
 			$classes = $classes = 'span-12';

@@ -34,14 +34,12 @@ function we_customize_register( $wp_customize ) {
 		        'name' => 'we_catalog_layout',
 		        'type' => 'image_select',
 		        'inline' => 1, //Set 0 to display image vertical
-		        'transport' => 'postMessage',
+		        'transport' => 'refresh',
 		        'heading' => __( 'Layout catalog:', 'wpeasy' ),
 		        'desc' => __( 'This is a demo for sidebar layout.', 'wpeasy' ),
 		        'options' => array(
 		            'list' => TPFW_URL . 'sample/assets/opt-1.jpg',
-		            'grid' => TPFW_URL . 'sample/assets/opt-2.jpg',
-		            'masory' => TPFW_URL . 'sample/assets/opt-3.jpg',
-		            'overlay' => TPFW_URL . 'sample/assets/opt-3.jpg',
+		            'grid' => TPFW_URL . 'sample/assets/opt-2.jpg'
 		        ),
 		        'value' => 'grid'//default
 		    ),
@@ -80,14 +78,13 @@ function we_customize_register( $wp_customize ) {
 		        'desc' => __( 'A short description for Select box', 'wpeasy' ),
 		        'transport' => 'postMessage',
 		        'options' => array(
-		            '1'   => __( '1 column', 'wpeasy' ),
 		            '2'   => __( '2 column', 'wpeasy' ),
 		            '3'   => __( '3 column', 'wpeasy' ),
 		            '4'   => __( '4 column', 'wpeasy' ),
 		            '6'   => __( '6 column', 'wpeasy' )
 		        ),
 		        'dependency' => array(
-		            'we_catalog_layout' => array( 'values' => array( 'grid','masory','overlay' ) ),
+		            'we_catalog_layout' => array( 'values' => array( 'grid' ) ),
 		        )
 		    ),
 		    array(

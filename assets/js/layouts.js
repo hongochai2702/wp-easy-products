@@ -14,14 +14,15 @@ jQuery(document).ready(function($) {
 	        $('div#loading').html('<p><img src="/wp-plugin/wp-content/plugins/wp-easy-products/assets/images/Facebook.gif"></p>');
 	        $.get(ajaxPagingURI, function (data) {
 	            if (data !== '') {
-	                $(".isotope").isotope('insert', $(data));
+	            	// Check layout.
+	            	$("#list-products").append($(data));
 	                $("img.iso-lazy-load").lazyload({
 	                    effect: "fadeIn"
 	                });
 	            }
 	            else {
 	                page = -1;
-	                $("#we-product-layout").append($("<div class='clearfix'></div>"));
+	                $("#list-products").append($("<div class='clearfix'></div>"));
 	                $("#productLoadMore").remove();
 	            }
 	            
@@ -35,7 +36,7 @@ jQuery(document).ready(function($) {
 		// Check if category display type 'infinite-scroll'. global variable in file archive-product.
 		if ( we_catalog_paging_display_type == 'infinite-scroll' ) {
 			if ($(window).scrollTop() >= $(document).height() - $(window).height() - 800) {
-			    if ($('#we-product-layout').length > 0) {
+			    if ($('#list-products').length > 0) {
 			        loadProducts();
 			    }
 		    }
@@ -43,7 +44,7 @@ jQuery(document).ready(function($) {
 			$("#productLoadMore").on("click", function(e) {
 				e.preventDefault();
 				$('div#loading').html('<p><img src="/wp-plugin/wp-content/plugins/wp-easy-products/assets/images/Facebook.gif"></p>');
-				if ($('#we-product-layout').length > 0) {
+				if ($('#list-products').length > 0) {
 			        loadProducts();
 			        
 			    } else {
