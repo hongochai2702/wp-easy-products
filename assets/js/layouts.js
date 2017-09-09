@@ -1,8 +1,9 @@
 jQuery(document).ready(function($) {
+	
 	var wpajaxurl = '/wp-plugin/wp-admin/admin-ajax.php';
 	var page = 1;
 	var inAjaxProcessing = false;
-	
+
 	function loadProducts() {
 	    var action = 'we_get_products_paging';
 	    var per_pages = we_catalog_display_number;
@@ -15,6 +16,8 @@ jQuery(document).ready(function($) {
 	        $.get(ajaxPagingURI, function (data) {
 	            if (data !== '') {
 	            	// Check layout.
+	            	
+	            	//$("#list-products").isotope('insert', $(data));
 	            	$("#list-products").append($(data));
 	                $("img.iso-lazy-load").lazyload({
 	                    effect: "fadeIn"

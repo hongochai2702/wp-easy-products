@@ -134,5 +134,5 @@
 	));
 	
 	// add image size.
-	add_image_size('weasy_image_size_thumb', 400, 400, true);
+	add_image_size('weasy-image-size-thumb', 600, 400, FALSE);
 	

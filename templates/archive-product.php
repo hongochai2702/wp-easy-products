@@ -11,7 +11,6 @@ global $weCustomizerOptions;
 $weSetting = $weCustomizerOptions->getSettings();
 $layout = $weCustomizerOptions->get_catalog_layout();
 $sidebar = ( $weSetting['we_catalog_sidebar_layout'] != 'none' ) ? $weSetting['we_catalog_sidebar_layout'] : '';
-
 get_header(); ?>
 <script type="text/javascript">
 //<!-- WE JAVASCRIPT CONFIG
@@ -30,11 +29,12 @@ get_header(); ?>
 	
 	<?php if( have_posts() ) : ?>
 		<div id="we-product-layout" class="catalog-<?php echo $layout; ?> <?php echo !empty($sidebar) ? 'span-9 column': 'span-12'; ?>">
-			<div id="list-products" class="row cart-btn-on-img accent-gradient wc-img-hover" >
+			<div id="list-products" class="row cart-btn-on-img accent-gradient wc-img-hover " >
 			<?php while( have_posts() ) : the_post(); ?>
 				<?php we_get_template_part( 'content-archive', $layout); ?>
 			<?php endwhile; // while has_post(); ?>
 			</div>
+			<div class="clearfix"></div>
 			<?php if ( $weSetting['we_catalog_paging_display_type'] == 'pagination' ) : ?>
     			<!-- Type: pagination -->
     			<?php the_posts_pagination(); ?>

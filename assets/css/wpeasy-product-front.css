@@ -4,6 +4,13 @@
 /* Fix css layerswp */
 /* ============================== */
  #wrapper-site, .wrapper-site { overflow: hidden; }
+.catalog-list .product-item.span-12 {
+  -webkit-transition: all .6s ease;
+-moz-transition: all .6s ease;
+-ms-transition: all .6s ease;
+-o-transition: all .6s ease;
+transition: all .6s ease;
+}
 /* ============================== */
 /* Product Style Archive */
 /* ============================== */
@@ -19,7 +26,6 @@
 }
 .archive-wpeasy-product .product {
 	transition: all .6s ease-in-out;
-
 }
 .catalog-grid .product:after, .catalog-grid .product:before {
     content: "";
@@ -40,7 +46,7 @@
 .catalog-grid .product .onsale {
     position: absolute;
     z-index: 01;
-	top: 40px;
+    top: 40px;
     left: 40px;
     min-height: 32px;
     min-width: 32px;
@@ -286,10 +292,89 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     display: inline-block;
     margin-bottom: 5px;
 }
-
-span.price {}
 .catalog-list .woocom-project .woocom-list-content .price .amount{}
+.catalog-list .product-item.span-12 { position: relative; }
+/* Responsive List Style */
+@media (min-width:1019px) and (max-width: 1199px) {
+  .catalog-list .woocom-project .woo-buttons-on-img {
+    width: 40%;
+  }
+  .catalog-list .woocom-project .woocom-list-content {
+    width: calc(100% - 40%);
+  }
+  .catalog-list .cart-btn-on-img .woo-buttons a, .catalog-grid .cart-btn-on-img .woo-buttons a {
+      width: auto;
+      max-width: 250px;
+  }
+  .catalog-list .cart-btn-on-img .woo-buttons a .filter-popup, .catalog-grid .cart-btn-on-img .woo-buttons a .filter-popup {
+    opacity: 1;
+    transition-delay: .2s;
+    -webkit-transition-delay: .2s;
+  }
+  
+}
+@media (min-width:768px) and (max-width: 1018px) {
+  .catalog-list .woocom-project .woo-buttons-on-img {
+    width: 40%;
+  }
+  .catalog-list .woocom-project .woocom-list-content {
+    width: calc(100% - 40%);
+  }
+  .catalog-list .woocom-project .woocom-list-content .entry-title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .catalog-list .cart-btn-on-img .woo-buttons a {
+      width: auto;
+      max-width: 250px;
+  }
+  .catalog-list .cart-btn-on-img .woo-buttons a .filter-popup {
+    opacity: 1;
+    transition-delay: .2s;
+    -webkit-transition-delay: .2s;
+  }
+  
+}
 
+@media (min-width:0px) and (max-width: 767px) {
+  .catalog-list .product-item.span-12 {
+    position: relative;
+  }
+  .catalog-list .woocom-project {
+      flex-direction: column;
+  }
+  .catalog-list .woocom-project .woo-buttons-on-img,
+  .catalog-list .woocom-project .woocom-list-content {
+    width: 100%;
+  }
+  .catalog-list .woocom-project .woo-buttons-on-img {
+    padding: 0;
+  }
+  .catalog-list .woocom-project .woocom-list-content {
+      padding: 30px 15px 30px 15px;
+  }
+  .catalog-list .cart-btn-on-img .woo-buttons a {
+      width: auto;
+      max-width: 250px;
+  }
+  .catalog-list .cart-btn-on-img .woo-buttons a .filter-popup {
+    opacity: 1;
+    transition-delay: .2s;
+    -webkit-transition-delay: .2s;
+  }
+
+  .catalog-list .cart-btn-on-img .woo-buttons, .catalog-grid .cart-btn-on-img .woo-buttons {
+    bottom: 10px;
+  }
+  .catalog-list .product .onsale, .catalog-grid .product .onsale {
+    top: 10px;
+    left: 10px;
+  }
+  .catalog-list .woocom-project .woocom-list-content .entry-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
 /* ============================== */
 /* Single Product Style */
 /* ============================== */
@@ -413,53 +498,4 @@ span.price {}
   display: block;
     overflow: hidden;
     background: #51a6f3;
-}
-.loader-ellips {
-  font-size: 20px; /* change size here */
-  position: relative;
-  width: 4em;
-  height: 1em;
-  margin: 10px auto;
-}
-
-.loader-ellips__dot {
-  display: block;
-  width: 1em;
-  height: 1em;
-  border-radius: 0.5em;
-  background: #555; /* change color here */
-  position: absolute;
-  animation-duration: 0.5s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-}
-
-.loader-ellips__dot:nth-child(1),
-.loader-ellips__dot:nth-child(2) {
-  left: 0;
-}
-.loader-ellips__dot:nth-child(3) { left: 1.5em; }
-.loader-ellips__dot:nth-child(4) { left: 3em; }
-
-@keyframes reveal {
-  from { transform: scale(0.001); }
-  to { transform: scale(1); }
-}
-
-@keyframes slide {
-  to { transform: translateX(1.5em) }
-}
-
-.loader-ellips__dot:nth-child(1) {
-  animation-name: reveal;
-}
-
-.loader-ellips__dot:nth-child(2),
-.loader-ellips__dot:nth-child(3) {
-  animation-name: slide;
-}
-
-.loader-ellips__dot:nth-child(4) {
-  animation-name: reveal;
-  animation-direction: reverse;
 }

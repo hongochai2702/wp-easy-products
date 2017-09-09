@@ -3,8 +3,7 @@
 	$column = $weCustomizerOptions->get_column_items();
 ?>
 <?php foreach ( $posts as $post ) : ?>
-<article id="product-<?php echo $post->ID; ?>" <?php post_class( 'product chili-item isotope-item product-item column ' . $column ); ?>>
-	<span class="onsale">Sale!</span>
+<article id="product-<?php echo $post->ID; ?>" <?php post_class( 'product chili-item isotope-item product-item column ' . $column ); ?> >
 	<figure class="woocom-project">
 		<div class="woo-buttons-on-img">
 				<?php /**
