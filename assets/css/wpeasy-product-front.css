@@ -18,6 +18,7 @@
     margin-bottom: 25px;
 }
 .archive-wpeasy-product .product {
+  position: relative;
 	transition: all .6s ease-in-out;
 
 }
@@ -259,7 +260,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     -ms-flex: 0 0 auto;
 }
 .catalog-list .woocom-project .woo-buttons-on-img > a{}
-.catalog-list .woocom-project .woo-buttons-on-img img{}
+.catalog-list .woocom-project .woo-buttons-on-img img{
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
 .catalog-list .woocom-project .woo-buttons-on-img .woo-buttons{}
 .catalog-list .woocom-project .woo-buttons-on-img .woo-buttons .add_to_cart_button{}
 .catalog-list .woocom-project .woo-buttons-on-img .woo-buttons .filter-popup{}

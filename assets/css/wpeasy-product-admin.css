@@ -3,7 +3,10 @@
 * Customize Custom post type PRODUCT.
 * URL: edit.php?post_type=product
 */
-
+/* Fix font family for Editor WordPress */
+body {
+    font-family: Tahoma, "Times New Roman", "Bitstream Charter", Times, serif !important;
+}
 /*
 - Custom Column WP List Product.
 */
@@ -20,4 +23,18 @@
 #customize-control-we_product_layout_sidebar .tpfw-image_select label img ,
 #customize-control-we_product_layout .tpfw-image_select label img{
 	width: 65px;
+}
+
+/*
+- Custom fields in post.php?post=1010&action=edit.
+*/
+
+/* row in form */
+.tpfw_form_row {
+	padding: 0;
+}
+/* /.Gallery Image */
+#side-sortables .tpfw_form_row .tpfw-image_picker .image_list li {
+    width: 30%;
+    height: 65px;
 }

@@ -134,5 +134,17 @@
 	));
 	
 	// add image size.
-	add_image_size('weasy_image_size_thumb', 400, 400, true);
+	add_image_size('weasy_image_size_thumb', 400, 400, false);
+
+	// Add product admin submenu.
+	add_action('admin_menu', 'we_product_customize_page');
+	function we_product_customize_page() {
+	    add_submenu_page(
+	        'edit.php?post_type=product',
+	        __( 'WE Products Customize', 'weasy' ),
+	        __( 'WE Products Customize', 'weasy' ),
+	        'manage_options',
+	        'customize.php'
+	    );
+	}
 	

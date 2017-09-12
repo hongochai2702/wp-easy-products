@@ -38,8 +38,8 @@ function we_customize_register( $wp_customize ) {
 		        'heading' => __( 'Layout catalog:', 'wpeasy' ),
 		        'desc' => __( 'This is a demo for sidebar layout.', 'wpeasy' ),
 		        'options' => array(
-		            'list' => TPFW_URL . 'sample/assets/opt-1.jpg',
-		            'grid' => TPFW_URL . 'sample/assets/opt-2.jpg'
+		            'list' => WPEASY_ASSETS_URL . '/images/products-1.svg',
+		            'grid' => WPEASY_ASSETS_URL . '/images/products-1.svg'
 		        ),
 		        'value' => 'grid'//default
 		    ),
