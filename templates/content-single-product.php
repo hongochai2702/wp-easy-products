@@ -8,12 +8,10 @@
 
 global $post, $layers_post_meta_to_display, $layers_page_title_shown;
 
+$product = get_product_posted_fields($post->ID);
+
 do_action('layers_before_single_post');
 
-/**
-* Display the Featured Thumbnail
-*/
-//echo layers_post_featured_media( array( 'postid' => get_the_ID(), 'wrap_class' => 'thumbnail push-bottom', 'size' => 'large' ) );
 
 if ( '' != get_the_content() ) { ?>
 	<?php do_action('layers_before_single_content'); ?>
@@ -37,13 +35,13 @@ if ( '' != get_the_content() ) { ?>
 	<div class="row wpeasy-single-product">
 		<div class="column span-4 wpeasy-product-image">
 			<a href="<?php echo $thumb_url; ?>" class="fancybox">
-			<?php echo layers_post_featured_media( array( 'postid' => get_the_ID(), 'wrap_class' => 'thumbnail push-bottom', 'size' => 'wpeasy-product-image-single-thumb' ) ); ?>
+			<?php echo layers_post_featured_media( array( 'postid' => get_the_ID(), 'wrap_class' => 'thumbnail push-bottom', 'size' => 'weasy_image_size_thumb' ) ); ?>
 			</a>
 		</div>
 		<div class="column span-8 wpeasy-product-content">
 			<div class="product-parent-category"><?php echo $term->name; ?></div>
 			<div class="product-name"><?php the_title(); ?></div>
-			<div class="product-price"><strong><?php _e( 'Giá', 'wpeasy' ); ?></strong> <?php echo number_format( get_field( 'cf_product_price' ), 0 ); ?> <sup style="vertical-align: top;">đ</sup></div>
+			<div class="product-price"><strong><?php _e( 'Giá', 'wpeasy' ); ?></strong> <?php echo we_format_price( array( 'regular_price' => $product['we_product_price'][0] , 'special_price' => $product['we_product_special_price'][0] ) ); ?> <sup style="vertical-align: top;">đ</sup></div>
 			<p class="short-description"><?php echo get_the_excerpt(); ?></p>
 		</div>
 	</div>
@@ -57,7 +55,20 @@ if ( '' != get_the_content() ) { ?>
               	<div class="tab-content">
 	                <div class="content c-tab1" style="display: block"><div class="clearfix"></div><?php the_content() ?></div>
 	            	<!-- /.c-tab1 -->
-                    <div class="content c-tab2"><div class="clearfix"></div><?php the_field( 'cf_parameter_technical' ); ?></div>
+                    <div class="content c-tab2"><div class="clearfix"></div>
+					<?php $values = get_product_posted_fields( $post->ID ); ?>
+			        <table class="table-responsive" border="0">
+			            <tbody>
+			                <?php foreach ($values as $key => $value) : ?>
+		 						<tr>
+			                        <th scope="row"><?php _e(str_replace('we_product_', '', $key), 'weasy'); ?></th>
+			                        <td><?php echo is_serialized($value[0]) ? implode(', ', unserialize($value[0])) : $value[0]; ?>
+			                        </td>
+		                    	</tr>
+			        		<?php endforeach; ?>
+			            </tbody>
+			        </table>
+                    </div>
             	</div>
             	<!-- /.tab-content -->
              </div>

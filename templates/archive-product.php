@@ -15,9 +15,11 @@ $sidebar = ( $weSetting['we_catalog_sidebar_layout'] != 'none' ) ? $weSetting['w
 get_header(); ?>
 <script type="text/javascript">
 //<!-- WE JAVASCRIPT CONFIG
-	var we_catalog_paging_display_type 	= '<?php echo $weSetting['we_catalog_paging_display_type']; ?>' ,
+	var we_catalog_term_id 				= '<?php echo get_queried_object_id(); ?>' ,
+		we_catalog_paging_display_type 	= '<?php echo $weSetting['we_catalog_paging_display_type']; ?>' ,
 		we_catalog_layout 				= '<?php echo $weSetting['we_catalog_layout']; ?>' ,
 		we_catalog_display_number		= '<?php echo $weSetting['we_catalog_display_number']; ?>';
+
 //-->
 </script>
 <?php get_template_part( 'partials/header' , 'page-title' ); ?>

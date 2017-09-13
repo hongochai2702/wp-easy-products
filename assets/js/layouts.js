@@ -4,13 +4,14 @@ jQuery(document).ready(function($) {
 	var inAjaxProcessing = false;
 	
 	function loadProducts() {
-	    var action = 'we_get_products_paging';
-	    var per_pages = we_catalog_display_number;
+	    var action 		= 'we_get_products_paging';
+	    var per_pages 	= we_catalog_display_number;
+	    var term_id 	= we_catalog_term_id;
 	
 	    if (page > -1 && !inAjaxProcessing) {
 	        inAjaxProcessing = true;
 	        page++;
-	        var ajaxPagingURI = wpajaxurl + '?action=we_get_products_paging&per_pages=' + per_pages + '&paged=' + page;
+	        var ajaxPagingURI = wpajaxurl + '?action=we_get_products_paging&term_id=' + term_id + '&per_pages=' + per_pages + '&paged=' + page;
 	        $('div#loading').html('<p><img src="/wp-plugin/wp-content/plugins/wp-easy-products/assets/images/Facebook.gif"></p>');
 	        $.get(ajaxPagingURI, function (data) {
 	            if (data !== '') {

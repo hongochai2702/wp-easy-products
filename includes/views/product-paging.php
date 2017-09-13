@@ -1,8 +1,10 @@
 <?php
 	// Customizer setting.
 	$column = $weCustomizerOptions->get_column_items();
+	
 ?>
 <?php foreach ( $posts as $post ) : ?>
+<?php $product = get_product_posted_fields($post->ID); ?>
 <article id="product-<?php echo $post->ID; ?>" <?php post_class( 'product chili-item isotope-item product-item column ' . $column ); ?>>
 	<span class="onsale">Sale!</span>
 	<figure class="woocom-project">
@@ -21,7 +23,7 @@
 		<figcaption class="woocom-list-content">
 			<?php do_action('weasy_before_list_title'); ?>
 			<h4 class="entry-title"><a href="<?php echo get_the_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>" rel="bookmark"><?php echo $post->post_title; ?></a></h4>
-		 	<span class="price"><span class="woocommerce-Price-amount amount">$ 69.69</span></span>
+		 	<span class="price"><span class="woocommerce-Price-amount amount"><?php echo we_format_price( array( 'regular_price' => $product['we_product_price'][0] , 'special_price' => $product['we_product_special_price'][0] ) ); ?></span></span>
 			<?php do_action('weasy_after_list_title'); ?>
 		</figcaption>
 	</figure>

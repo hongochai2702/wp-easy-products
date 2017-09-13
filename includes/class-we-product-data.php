@@ -18,10 +18,18 @@ class WE_Product_Data {
 		$orderProducts 	= json_decode($weSetting['we_catalog_product_order'] , TRUE); // Order +  Order by.
 		$per_pages = ( !empty($_GET['per_pages']) ) ? sanitize_text_field($_GET['per_pages']): 6;
 		$paged = ( !empty($_GET['paged']) ) ? sanitize_text_field($_GET['paged']): 1;
-		
+		$term_id = ( !empty($_GET['term_id']) ) ? sanitize_text_field($_GET['term_id']): 1;
 		$posts = get_posts(array(
 				'posts_per_page' 	=> $per_pages,
 				'post_type' 		=> 'product',
+				'tax_query' => array(
+									array(
+									  'taxonomy' => 'product_cate',
+									  'field' => 'id',
+									  'terms' => $term_id, // Where term_id of Term 1 is "1".
+									  'include_children' => false
+									)
+								),
 				'paged'				=> $paged,
 				'post_status' 		=> 'publish',
 				'suppress_filters'	=> true,

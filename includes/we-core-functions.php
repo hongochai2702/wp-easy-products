@@ -4,6 +4,88 @@ define('WC_TEMPLATE_DEBUG_MODE', FALSE);
 
 
 /**
+ * Get the posted data for a form
+ *
+ * @param  integer $post_id the form post ID
+ *
+ * @ printf
+ */
+if ( !function_exists('we_format_price') ) {
+    function we_format_price( $price = array() ) {
+        // Check value tranfer.
+     
+        $regular_price = number_format_i18n( $price['regular_price'] );
+        $special_price = number_format_i18n( $price['special_price'] );
+        $html .= "<div class='price'>";
+        if ( !isset($regular_price) || empty($regular_price) ) {
+            $html .= "<span class='amount regular-price'>". __("Contact us", "weasy") ."</span>";
+        } else {
+            $html .= "<span class='amount regular-price'>". $regular_price ." VNĐ</span>";
+        }
+        
+        if ( $regular_price != 0 && $special_price != 0 ) {
+            $html .= "<span class='amount regular-price'>". $regular_price ." VNĐ</span><span class='amount special-price'>". $special_price ." VNĐ</span>";
+        }
+        
+        $html .= "</div>";
+        return $html;                        
+    }
+}
+
+/**
+ * Get the posted data for a form
+ *
+ * @param  integer $post_id the form post ID
+ *
+ * @return array            the form values
+ */
+if ( !function_exists('get_gallery_images_meta') ) {
+	function get_gallery_images_meta( $post_id ) {
+		// Check value tranfer.
+		if ( !isset($post_id) || empty($post_id) ) return;
+		
+		$gallery = array();
+		$value = get_post_meta( $post_id, 'we_product_gallery_thumb', TRUE );
+		$value = explode( ',', trim( $value ) );
+
+		if ( !empty( $value[0] ) && sizeof( $value ) > 0 ) {
+			foreach ( $value as $str ) {
+				$arr = explode( '|', $str );
+				if ( !empty( $arr[0] ) && sizeof( $arr ) > 0 ) {
+					$id = $arr[0];
+					$gallery[] = wp_get_attachment_image( $id, 'thumbnail' );
+				}
+			}
+		}
+		return $gallery;
+	}
+}
+
+
+
+/**
+ * Get the posted data for a form
+ *
+ * @param  integer $post_id the form post ID
+ *
+ * @return array            the form values
+ */
+function get_product_posted_fields($post_id = 0) {
+    $posted = array();
+    $post_meta = get_post_meta($post_id);
+    $posted = array_intersect_key(
+        $post_meta,
+        array_flip(array_filter(array_keys($post_meta), function ($key) {
+            return preg_match('/^we_product_/', $key);
+        }))
+    );
+
+    return $posted;
+}
+
+
+
+/**
  * Check customizer and page template settings before displaying a sidebar
  *
  * @param   int     $sidebar                Sidebar slug to check

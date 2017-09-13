@@ -31,7 +31,7 @@ body {
 
 /* row in form */
 .tpfw_form_row {
-	padding: 0;
+	padding-bottom: 0;
 }
 /* /.Gallery Image */
 #side-sortables .tpfw_form_row .tpfw-image_picker .image_list li {
